@@ -1,0 +1,31 @@
+
+body{
+    margin: 50px;
+}
+
+section{
+    display: grid;
+    place-items: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.hidden{
+    opacity: 0;
+    filter: blur(15px);
+    transition: all 1s;
+}
+.show{
+    opacity: 1;
+    filter: blur(0px);
+    transition: all 1s;
+}
+
+h2{
+    text-align: center;
+    font-size: 100px;
+}
+
+p{
+    font-size: 50px;
+}

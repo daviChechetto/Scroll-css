@@ -1,0 +1,20 @@
+body {
+    min-height: 500vh;
+}
+
+svg {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -50px;
+  
+    transform: rotate(0deg); /* Inicial */
+    transition: transform 0.1s linear; /* Suaviza a transição */
+  }
+  
+@keyframes rotate {
+    to {
+        transform: rotate(360deg);
+    }
+}
