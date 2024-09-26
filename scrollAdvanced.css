@@ -1,0 +1,194 @@
+body{
+    margin: 50px;
+}
+
+:root{
+    --cards:4;
+    --cardHeight: 50vh;
+    --cardTopPadding: 1.5em;
+    --cardMargin: 4vw;
+}
+
+section{
+    font-size: 1.5rem;
+    margin-inline: auto;
+    width: min(60ch, 100%);
+}
+
+.container{
+    width: 90%;
+    margin: 0 auto;
+}
+
+#cards{
+    list-style: none;
+    padding-left: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(var(--cards), var(--cardHeight));
+    gap: var(--cardMargin);
+    padding-bottom: calc(var(--cards) * var(--cardTopPadding));
+    padding-bottom: var(--cardMargin);
+
+}
+
+#card1{
+    --index:1;
+}
+#card2{
+    --index:2;
+}
+#card3{
+    --index:3;
+}
+#card4{
+    --index:4;
+}
+
+.card{
+    position:sticky;
+    top: 0;
+    padding-top: calc(var(--index) * var(--cardTopPadding));
+}
+
+#card1 .card-body{
+    background-color: #52b2cf;
+}
+#card2 .card-body{
+    background-color: #52cfb0;
+}
+#card3 .card-body{
+    background-color: #61cf52;
+}
+#card4 .card-body{
+    background-color: #cfcd52;
+}
+
+.card-body{
+    box-sizing: border-box;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px 0;
+    height: var(--cardHeight);
+}
+
+
+.esse{
+    animation: apper 1ms ease-in-out;
+    animation-timeline: view();
+    animation-range: cover 0% cover 50%;
+}
+
+@keyframes apper {
+    from{
+        opacity: 0;
+        transform: translateX(-100vw);
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0px);
+    }
+    
+}
+
+:root{
+    --card-height: 40vw;
+    --card-margin: 4vw;
+    --card-top-offset: 1em;
+    --outline-width: 0px;
+}
+
+main {
+    width: 80vw;
+    margin: 0 auto;
+    text-align: center;
+}
+main *{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+main #cards{
+    list-style: none;
+    outline: calc(var(--outline-width)* 10) solid hotpink;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(var(--numcards), var(--card-height));
+    gap: var(--card-margin);
+
+    padding-bottom: calc(var(--numcards)* var(--card-top-offset));
+    margin-bottom: var(--card-margin);
+}
+
+main .card {
+    outline: var(--outline-width) solid lime;
+}
+
+main .card {
+    position: sticky;
+    top: 0;
+    padding-top: calc(var(--index)* var(--card-top-offset));
+}
+
+main .card__content {
+    transform-origin: 50% 0%;
+    will-change: transform;
+}
+
+main .card__content {
+    box-shadow: 0 0.2em 1em rgba(0, 0, 0, 0.1), 0 1em 2em rgba(0, 0, 0, 0.1);
+    background: rgb(255, 255, 255);
+    color: rgb(10, 5, 7);
+    border-radius: 1em;
+    overflow: hidden;
+    display: grid;
+    grid-template-areas: "text img";
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    align-items: stretch;
+    outline: var(--outline-width) solid blue;
+}
+
+main .card__content > div {
+    grid-area: text;
+    width: 80%;
+    place-self: center;
+    text-align: left;
+    display: grid;
+    gap: 1em;
+    place-items: start;
+}
+
+
+main #card_1{
+    --index: 1;
+}
+main #card_2{
+    --index: 2;
+}
+main #card_3{
+    --index: 3;
+}
+main #card_4{
+    --index: 4;
+}
+
+@supports (animation-timeline: view()) {
+    main .card {
+        --index0: calc(var(--index) - 1);
+        --reverse-index: calc(var(--numcards) - var(--index0));
+        --reverse-index0: calc(var(--reverse-index) - 1);
+    }
+}
+
+@supports (animation-timeline: view()) {
+    .card__content {
+        --start-range: calc(var(--index0) / var(--numcards)* 100%);
+        --end-range: calc((var(--index)) / var(--numcards)* 100%);
+        animation: linear scale forwards;
+        animation-timeline: --cards-element-scrolls-in-body;
+        animation-range: exit-crossing var(--start-range) exit-crossing var(--end-range);
+    }
+}
+

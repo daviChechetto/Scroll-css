@@ -1,0 +1,204 @@
+body {
+  min-height: 500vh;
+}
+
+#Carrossel ul{
+  list-style: none;
+}
+
+#Carrossel a{
+  text-decoration: none;
+}
+
+#Carrossel .cartao{
+  width: 200px;
+  height: 280px;
+  position: relative;
+  left: 0;
+  top: 0;
+  transition: 400ms ;
+  background-color: #ffffff;
+  box-shadow: -3px 0 6px #0000004f;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+#Carrossel .cartao:not(:first-child){
+  margin-left: -20px;
+}
+
+#Carrossel .cartao:hover{
+  transform: translateY(-20px);
+}
+
+#Carrossel .cartao:hover ~ .cartao{
+  transform: translateX(40px);
+}
+
+.conteudo-cartao h5 {
+  padding-block: 15px;
+  height: 100px;
+  color: #6b6b6b;
+}
+
+.conteudo-cartao .icone {
+  height: 140px;
+  text-align: center;
+}
+
+.conteudo-cartao .icone i {
+  font-size: 5.5rem;
+  color: #00b2ff;
+}
+
+.conteudo-cartao .barra {
+  position: relative;
+  height: 3px;
+}
+
+.conteudo-cartao .barra-vazia {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: #bcd3eb;
+}
+
+.conteudo-cartao .barra-cheia {
+  width: 0;
+  height: 100%;
+  position: absolute;
+  background: linear-gradient(90deg, rgba(0, 154, 217, 1) 0%, rgb(0, 255, 255) 65%, rgb(0, 217, 127) 100%);
+  transition: 400ms;
+}
+
+.conteudo-cartao:hover .barra-cheia {
+  width: 66%;
+}
+
+.cartao-selecionado .barra-cheia,
+.cartao-selecionado:hover .barra-cheia {
+  width: 100%;
+}
+
+.cartao:not(:first-child) .cartao-selecionado {
+  margin-inline: 20px;
+}
+
+.cartao:first-child .cartao-selecionado {
+  margin-right: 20px;
+}
+
+@media (max-width:991px) {
+
+  #Carrossel .cartao,
+  #Carrossel .conteudo-cartao:not(:first-child),
+  .cartao:hover ~ .cartao{
+    all: unset;
+  }
+
+  #Carrossel .cartao:not(:first-child){
+    margin: 0;
+  }
+
+  #Carrossel .cartao:hover{
+    transform: translateY(0px);
+    background-color: #6b6b6b;
+  }
+  .conteudo-cartao:hover {
+    background-color: #6b6b6b;
+  }
+  
+  #Carrossel .cartao:hover ~ .cartao{
+    transform: translateX(0px);
+  }
+
+  :root{
+    --cards:4;
+    --cardHeight: 40vh;
+    --cardTopPadding: 1.5em;
+    --cardMargin: 4vw;
+  }
+
+
+  #Carrossel .cartao:first-child::before {
+    /* content: "Documentos sobre a DTI"; */
+    position: absolute;
+    top: 0;
+    font-size: calc(1.325rem + .9vw);;
+    font-weight: 500;
+  }
+  
+  #Carrossel h2{
+    margin: 0;
+    top: 50px;
+
+  }
+  #cartoes{
+    list-style: none;
+    padding-left: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(var(--cards), var(--cardHeight));
+    gap: var(--cardMargin);
+    padding-bottom: calc(var(--cards)* var(--cardTopPadding));
+    padding-bottom: var(--cardMargin);
+  }
+
+  #Carrossel .cartao{
+    position: sticky;
+    top: 50px;
+    padding-top: calc(var(--index)* var(--cardTopPadding));
+  }
+
+  #Carrossel .cartao .conteudo-cartao{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    align-content: space-between;
+
+    box-sizing: border-box;
+
+    height: var(--cardHeight);
+    width: 100%;
+    padding: 30px;
+
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0px 0px 6px 0px #0000004f;
+  }
+
+  #cartao1{
+    --index:1;
+  }
+  #cartao2{
+      --index:2;
+  }
+  #cartao3{
+      --index:3;
+  }
+  #cartao4{
+      --index:4;
+  }
+
+  .conteudo-cartao{
+    width: 500px;
+    height: auto;
+    box-sizing: border-box;
+  }
+
+  h5, .icone{
+    flex:1
+  }
+
+  .cartao .icone i{
+    font-size: 7rem ;
+  }
+
+  .barra{
+    width: 100%;
+  }
+
+}
+
+
+
